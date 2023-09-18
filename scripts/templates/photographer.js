@@ -1,6 +1,6 @@
 function photographerTemplate(data) {
     const { name, portrait, city, tagline, country, price, id } = data;
-
+    console.log('datatemplate=============',data)
     // const picture = `assets/photographers/${portrait}`;
     // Récupération des photos:
     const picture = `../assets/photographers/Photographers_ID_Photos/${portrait}`
@@ -11,15 +11,12 @@ function photographerTemplate(data) {
         article.setAttribute("tabindex",  0);
         // div link
         const link = document.createElement('a')
-        link.setAttribute("href", `../photographer.html?${id}`)
+        link.setAttribute("href", `../photographer.html?id=${id}`)
         link.classList.add('link')
-        // const link = document.createElement( 'div' );
-        // link.classList.add('link')
         // img
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         img.setAttribute("alt", name)
-        // img.setAttribute("href", "./photographer.html")
         // h2
         const photographerName = document.createElement( 'h2' );
         photographerName.classList.add('photographer-name')
@@ -32,20 +29,15 @@ function photographerTemplate(data) {
         const tagPhotographer = document.createElement( 'p' );
         tagPhotographer.classList.add('tagline')
         tagPhotographer.textContent = tagline;
-        // const p3 = document.createElement( 'p' );
-        // p3.textContent = country;
         // price
         const dayPrice = document.createElement( 'p' );
         dayPrice.classList.add('price')
         dayPrice.textContent = price + "€/jour";
-        // ====
-        //article.appendChild(link)  //ajout
-        // link.appendChild(img)
+        // Liaison au DOM
         article.appendChild(link)
         link.appendChild(img);
         link.appendChild(photographerName);
         article.appendChild(localisation); //ajout
-        //article.appendChild(p3); //ajout
         article.appendChild(tagPhotographer); //ajout
         article.appendChild(dayPrice); //ajout
         return (article);
