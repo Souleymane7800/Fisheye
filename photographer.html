@@ -1,41 +1,97 @@
 <!DOCTYPE html>
-<html>
+<!-- Ajout de lang -->
+<html lang="fr" > 
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/690961c80d.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
       <!-- Ajout balise a -->
       <a href="./index.html">
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" 
+          class="logo" 
+          alt="logo Fisheye"
+          title="logo Fisheye" />
       </a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <!-- Filtre -->
+      <section class="filter">
+        <div class="filter_section">
+          <div class="filter_box">
+            Trier par :
+          </div>
+          <!-- Select box -->
+          <div class="filter_select">
+            <ul class="select">
+              <li>
+                <input type="radio" class="select_close"
+                  name="filterselect"
+                  id="filterselect_close" value="" >
+                  <span class="select_label select_label-placeholder">Popularité</span>
+              </li>
+              <li class="select_items">
+                <input type="radio" class="select_expand"
+                  name="filterselect" id="filterselect_opener" >
+                <label class="select_close_label" for="filterselect_close"></label>
+                  <ul class="select_options">
+                    <li class="select_option">
+                      <input type="radio" class="select_input" 
+                        name="filterselect" id="filterselect_date" >
+                      <label for="filterselect_date" class="select_label">
+                        <span class="border_top">Date</span>
+                      </label>
+                    </li>
+                    <li class="select_option">
+                      <input class="select_input" type="radio" 
+                        name="filterselect" id="filterselect_titre" >
+                      <label for="filterselect_titre" class="select_label">
+                        <span class="border_top">Titre</span>
+                      </label>
+                    </li>
+                  </ul>
+                  <label for="filterselect_opener" class="select_expand-label"></label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Gallery img -->
+      <section class="gallery_card_section"></section>
     </main>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()"
+            alt="Fermer" 
+            title="Fermer cette fenêtre" 
+            tabindex="0"
+            aria-label="Fermer"/>
         </header>
 				<form>
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input type="text"/>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
+    <!-- Utils -->
+    <script src="/scripts/utils/filterBox.js"></script>
     <!-- Template -->
     <script src="/scripts/templates/photograph-page.js"></script>
+    <!-- Factories -->
+    <script src="/scripts/factories/mediaFactory.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>

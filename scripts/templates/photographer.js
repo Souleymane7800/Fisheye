@@ -1,10 +1,11 @@
 function photographerTemplate(data) {
     const { name, portrait, city, tagline, country, price, id } = data;
-    console.log('datatemplate=============',data)
-    // const picture = `assets/photographers/${portrait}`;
+    //console.log('datatemplate=============',data)
+
     // Récupération des photos:
     const picture = `../assets/photographers/Photographers_ID_Photos/${portrait}`
 
+    // Je mets en place le DOM
     function getUserCardDOM() {
         // article
         const article = document.createElement( 'article' );
@@ -17,6 +18,7 @@ function photographerTemplate(data) {
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         img.setAttribute("alt", name)
+        img.setAttribute("aria-label","Photographe " + name)
         // h2
         const photographerName = document.createElement( 'h2' );
         photographerName.classList.add('photographer-name')
@@ -37,9 +39,9 @@ function photographerTemplate(data) {
         article.appendChild(link)
         link.appendChild(img);
         link.appendChild(photographerName);
-        article.appendChild(localisation); //ajout
-        article.appendChild(tagPhotographer); //ajout
-        article.appendChild(dayPrice); //ajout
+        article.appendChild(localisation); 
+        article.appendChild(tagPhotographer); 
+        article.appendChild(dayPrice); 
         return (article);
     }
     return { name, picture, getUserCardDOM }
