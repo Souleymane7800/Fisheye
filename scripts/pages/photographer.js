@@ -3,12 +3,9 @@
 //  Datas
 let photographers = []
 let media = []
-// let photographData
-// let photographMedia
 
 // On récupère les données par l'url
 let params = window.location.search;
-console.log(params)
 const urlParams = new URLSearchParams(params);
 const photographerId = urlParams.get('id');
 
@@ -21,65 +18,84 @@ async function getPhotograph() {
             .then((data2) => {
                   photographers = data2.photographers
                   media = data2.media
-                  console.log('photographdataPAGESJS=============',data2)
-            }) 
+            }); 
             
-            
-            console.log("MEDIADATA==========================",photographers,media)
             // On retourne les données dans un tableau
             return {photographers, media}
 
-            } catch (error) {
+      } catch (error) {
                   // En cas d'erreur on envoie une alerte
-                console.log("Une erreur est survenue : ",error);
-            }
-}
+                console.log("Une erreur est survenue : ", error);
+      };
+};
 
 // On affiche les données du photographe grâce à son ID
 async function displayData(photographer) {
-    //console.log("je rentre dans displaydata=====================")
       const photographHeader = document.querySelector(".photograph-header");
-        //console.log("PHOTOHEADER===============",photographHeader)
-        
+        //console.log(photographer)
+      // On envoie les données dans template
       const photographerModel = photographTemplate(photographer);
       const photographCardDOM = photographerModel.getPhotographCardDOM();
       photographHeader.appendChild(photographCardDOM);
-
-}
-
-// On affiche la gallerie médias du photographe
-async function displayMedia(photographMedia) {
-      console.log("je rentre dans dysplaymedia")
-      // const main = document.querySelector('#main')
-      const sectionCard = document.querySelector('.gallery_card_section')
-      console.log('photographermedia===========', photographMedia)
-      photographMedia.forEach((media) => {
-            const mediaModel = mediaFactory(media)
-            const mediaCardDom = mediaModel.getMediaCardDOM();
-            sectionCard.appendChild(mediaCardDom)
-            
-      });
 };
 
+// On affiche la galerie médias du photographe
+async function displayMedia(photographMedia) {
+      const sectionCard = document.querySelector('.gallery_card_section');
+
+      // Iteration des medias et envoie dans mediaFactory
+      photographMedia.forEach((media) => {
+            const mediaModel = mediaFactory(media);
+            const mediaCardDom = mediaModel.getMediaCardDOM();
+            sectionCard.appendChild(mediaCardDom);
+            // const sortModel = openLightBox(media);
+      });
+      // photographMedia.forEach((media) => {
+            // const sortModel = openLightBox(photographMedia);//test
+            const filtreModel = displaySortDatas(photographMedia);
+            // const mediaCardDom = sortModel.getMediaCardDOM();
+            // sectionCard.appendChild(sortModel);
+            // console.log('data==========',media)
+      // });
+};
+
+// media lightbox test
+async function displayLightBox(photographMedia) {
+      const lightboxWrapper = document.querySelector('#modal_lightbox');
+
+      photographMedia.forEach((image) => {
+            // const mediaLightBox = openLightBox(image);
+            // const lightBoxCardDom = mediaLightBox.getLightBoxCardDOM();
+            // lightboxWrapper.appendChild(lightBoxCardDom);
+            // console.log('medialightbox', image);
+
+      })
+}
 
 async function init () {
-      const { photographers, media } = await getPhotograph()
+      const { photographers, media } = await getPhotograph();
 
+      // Récupération du photographe par son ID
       const photographer = photographers.find(
            (photographer) => photographer.id == photographerId
       )
-      console.log('PHOTOGRAPHER============',{photographer})
 
-      // a verifier
+      // On filtre les medias
       const photographMedia = media.filter(
-            (media) => media.photographerId == photographerId)
-            console.log('PHOTOGRAPHMEDIA', {photographMedia})
+            (media) => media.photographerId == photographerId
+      )
 
+      // mediaId test
+      // const currentImage = media.filter(
+      //       (media) => media.photographerId.id == media.id
+      //       )
+            // console.log('mediaID', currentImage)
+      // console.log('photographermedia', media.image)
+      displayLightBox(photographMedia)
       displayData(photographer) // On envoie les données dans photograph-header
       displayMedia(photographMedia)
-      // return {photographer, media}
+};
 
-}
 init();
 
 

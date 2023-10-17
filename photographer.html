@@ -2,15 +2,16 @@
 <!-- Ajout de lang -->
 <html lang="fr" > 
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisheye - photographe </title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/690961c80d.js" crossorigin="anonymous"></script>
-    <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
+    <header id="header">
       <!-- Ajout balise a -->
       <a href="./index.html">
         <img src="assets/images/logo.png" 
@@ -25,20 +26,41 @@
       </div>
       <!-- Filtre -->
       <section class="filter">
+        <h2 class="filter_box">Trier par :</h2>
         <div class="filter_section">
-          <div class="filter_box">
-            Trier par :
-          </div>
-          <!-- Select box -->
-          <div class="filter_select">
-            <ul class="select">
+          <div class="dropdown">
+            <button class="btn__drop">
+              <span id="current__sort">Popularité</span>
+              <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+
+            <ul class="drop__content">
               <li>
+                <button>Popularité</button>
+              </li>
+              <li>
+                <button>Date</button>
+              </li>
+              <li>
+                <button>Titre</button>
+              </li>
+
+            </ul>
+          </div>
+
+          <!-- <div class="filter_box">
+            Trier par :
+          </div> -->
+          <!-- Select box -->
+          <!-- <div class="filter_select"> -->
+            <!-- <ul class="select dropdown"> -->
+              <!-- <li>
                 <input type="radio" class="select_close"
                   name="filterselect"
                   id="filterselect_close" value="" >
                   <span class="select_label select_label-placeholder">Popularité</span>
-              </li>
-              <li class="select_items">
+              </li> -->
+              <!-- <li class="select_items">
                 <input type="radio" class="select_expand"
                   name="filterselect" id="filterselect_opener" >
                 <label class="select_close_label" for="filterselect_close"></label>
@@ -59,16 +81,19 @@
                     </li>
                   </ul>
                   <label for="filterselect_opener" class="select_expand-label"></label>
-              </li>
-            </ul>
+              </li> -->
+            <!-- </ul> -->
           </div>
-        </div>
+        <!-- </div> -->
       </section>
       <!-- Gallery img -->
-      <section class="gallery_card_section"></section>
+      <section class="gallery_card_section">
+        <!-- a verifier -->
+        <!-- <div class="counter__likes" id="counter__likes"></div> -->
+      </section>
     </main>
     <div id="contact_modal">
-			<div class="modal">
+			<div class="modal" role="document">
 				<header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()"
@@ -79,20 +104,55 @@
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input type="text"/>
+						<label for="firstName">Prénom</label>
+						<input type="text" id="firstName" name="firstName" required aria-required="true"/>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <div>
+						<label for="lastName">Nom</label>
+						<input type="text" id="lastName" name="lastName" required aria-required="true"/>
+					</div>
+          <div>
+						<label for="email">Email</label>
+						<input type="text" id="email" name="email" required aria-required="true"/>
+					</div>
+          <div>
+						<label for="message">Message:</label>
+            <textarea id="message" name="message" required aria-required="true"></textarea>
+					</div>
+          <button type="submit" class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <!-- Utils -->
-    <script src="/scripts/utils/filterBox.js"></script>
+    <!-- Modal lightbox -->
+    <div id="modal_lightbox">
+      <div class="lightbox">
+        <button class="btn__lightbox__prev" >
+          <!-- Précédent -->
+          <!-- <i class="fa-solid fa-chevron-left"></i> -->
+        </button>
+        <button class="btn__lightbox__next" >
+          <!-- Suivant -->
+          <!-- <i class="fa-solid fa-chevron-right"></i> -->
+        </button>
+        <button class="btn__lightbox__close" onclick="closeLightbox()">
+          <!-- <img src="assets/icons/close.svg" onclick="closeModal()"
+              alt="Fermer" 
+              title="Fermer cette fenêtre" 
+              tabindex="0"
+              aria-label="Fermer"/> -->
+        </button>
+        <div class="lightbox__media">
+      </div>
+        <!-- <img src="./assets/photographers/243/Animals_Rainbow.jpg" alt=""> -->
+    </div>
     <!-- Template -->
     <script src="/scripts/templates/photograph-page.js"></script>
     <!-- Factories -->
     <script src="/scripts/factories/mediaFactory.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <!-- Utils -->
+    <script src="/scripts/utils/filterBox.js"></script>
+    <script src="/scripts/utils/lightBox.js"></script>
   </body>
 </html>
