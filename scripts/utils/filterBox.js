@@ -1,93 +1,73 @@
-// console.log('je suis dans filterbox');
+//console.log('je suis dans filterbox');
+// envoyer les medias ici
 
-// Ajout du DOM
-// const main = document.querySelector('#main');
-// const filterBoxContainer = document.createElement('section');
-// const filterSelect = document.createElement('div');
-// filterSelect.classList.add('custom-select')
-
-// main.appendChild(filterBoxContainer)
-// filterBoxContainer.appendChild(filterSelect)
-// 13mn
-// Display sort
-
-const datas = [];
-const displaySortDatas = (photographermedia) => {
-      console.log('sortdata===========',photographermedia)
-      const gallery = document.querySelectorAll('.mediaCard');
-      gallery.forEach((article) => {
-            // return article
-            console.log('article',article)
-            return `
-                   <article>
-                         <div>
-                               <img src="${article.datas}" alt="${article.title}">
-                         </div>
-                  </article>
-             `;
-      })
-      // console.log('gallery', gallery)
-
-};
-displaySortDatas()
-// ouvrir le dropdown
+// // ouvrir le dropdown
 const btnDrop = document.querySelector('.btn__drop');
 const showMenu = () => {
-      const menu = document.querySelector('.drop__content');
-      menu.classList.toggle('active')
+     // console.log('j\'ouvre le menu')
+      const menu = document.querySelector('.drop__options');
+      menu.classList.toggle('dropdown-active');
       document.querySelector('.arrow').classList.toggle('rotate');
 }
 btnDrop.addEventListener('click', showMenu);
 
-// Filter les datas
-const filterData = Array.from(document.querySelectorAll('.drop__content li button'));
-const currentSort = document.querySelector('#current__sort');
+// Filter datas
+const allMedias = Array.from(document.querySelectorAll('.drop__options li button'));
+const currentSort = document.querySelector('#current__sort');//
+//console.log('allmedias',allMedias)
+// Hide option deja selectionner:
+let optionSelected = allMedias.find(filter => filter.textContent == currentSort.textContent);
+optionSelected.style.display = "none";//
+//console.log('selected======',optionSelected)
 
-// const {title, likes, date} = datas;
-// Cacher les options déjà sélectionneés
-let optionSelectionned = filterData.find((filter )=> filter.textContent == currentSort.textContent);
-optionSelectionned.style.display = "none";
-const sortDatas = (sortType) => {
-      switch (sortType) {
-        case 'Popularité':
-          datas.
-         
-    sort((a, b) => b.likes - a.likes);
-          break;
-        case 'Title':
-          datas.sort((a, b) => a.title.localeCompare(b.title));
-          break;
-        case 'Date':
-          datas.sort((a, b) => new Date(b.date) - new Date(a.date));
-          break;
-      }
-    };
-// const sortDatas = sortType => {
-//       switch (sortType) {
-//             case "Popularité" :
-//                   datas.concat((a,b) => b.likes - a.likes) 
-//                   break;
-//             case "Title" :
-//                   datas.sort((a, b) => a.title.localeCompare(b.title))
-//                   break;
-//             case "Date" :
-//                   datas.sort((a, b) => new Date(b.date) - new Date(a.date))
-//                   break;
-//       }
-// };
-
-filterData.forEach((filter )=> {
+allMedias.forEach(filter => {
       filter.addEventListener('click', () => {
             const filterValue = filter.textContent;
             currentSort.textContent = filterValue;
+           // console.log('filtervalue',filterValue)
 
-            if(optionSelectionned) optionSelectionned.style.display = "block";
-            filter.style.display = "none";
-            optionSelectionned = filter
+            if(optionSelected) optionSelected.style.display = 'block';
 
-            // getListeMedias()
-            sortDatas(filterValue);
+            filter.style.display = 'none';
+            optionSelected = filter;
+
+            // displayData(filterValue)
+            // mediaFactory()
+            displayMedia(filterValue)
+            // console.log('pmedia====',photographMedia)
+            // sortMedia();
+            // displayMedia(photographMedia);
+            showMenu();
+            // filterBox()
       })
 })
-// console.log('data===========fin',datas)
-// console.log(filterData,currentSort)
+
+// function filterBox(photographMedia) {
+//       console.log('filtermeedia',photographMedia)
+//       displayMedia(photographMedia);
+// }
+
+
+// ===========================================================
+// // async function displaySortDatas(photographerMedia) {
+// //       console.log('photograperMedia',photographerMedia);
+      
+//       async function getMedias(sortBy = 'popularite') {
+//             displaySortDatas(photographerMedia);
+//             const parameters = new URLSearchParams(window.location.search)
+//             const idString = parameters.get('id');
+//             console.log('idstring',idString)
+      
+//             photographerMedia.filter((mediaObj) => mediaObj.photographerId == idString);
+//             if(sortBy === 'popularite') {
+//                   mediaFactory.sort((a,b) => b.likes - a.likes);
+                  
+//             } else if (sortBy === 'date') {
+//                   mediaFactory.sort((a,b) => new Date(b.date) - new Date(a.date));
+//             } else if (sortBy === 'title') {
+//                   mediaFactory.sort((a,b) => a.title.localeCompare(b.title));
+//             }
+            
+//             return media
+//       }
+//       // getMedias()

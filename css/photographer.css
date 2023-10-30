@@ -139,7 +139,9 @@ form textarea {
 }
 
 /* Filter */
-.filter, .filter::after, .filter::before {
+.filter,
+.filter::after,
+.filter::before {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -161,7 +163,7 @@ form textarea {
     font-size: clamp(1.6rem, 3vw, 1.8rem);
 }
 
-.filter_section{
+.filter_menu {
     position: relative;
     height: 100%;
 }
@@ -171,6 +173,7 @@ form textarea {
     position: absolute;
     border-radius: 5px;
     overflow: hidden;
+    width: 200px;
 }
 
 .btn__drop {
@@ -181,7 +184,7 @@ form textarea {
     gap: 10px;
 }
 
-.drop__content {
+.drop__options {
     padding: 0;
     margin: 0;
     max-height: 0;
@@ -189,31 +192,31 @@ form textarea {
     transition: max-height .2 ease-in-out;
 }
 
-.drop__content li {
+.drop__options li {
     list-style-type: none;
-    width: 160px;
+    width: 100%;
     position: relative;
 }
 
-.drop__content li::before {
+.drop__options li::before {
     content: '';
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 85%;
+    width: 90%;
     height: 1px;
     background-color: #fff;
 }
 
-.drop__content li:hover,
+.drop__options li:hover,
 .btn__drop:hover {
     background-color: #DB8876;
     color: #000;
 }
 
 .btn__drop,
-.drop__content li button {
+.drop__options li button {
     width: 100%;
     height: 50px;
     padding: 15px;
@@ -221,15 +224,15 @@ form textarea {
     outline: none;
     color: #fff;
     cursor: pointer;
-    font-size: clamp(1.4rem, 3vw, 1.6rem);
+    font-size: clamp(1rem, 3vw, 1.2rem);
 }
 
-.drop__content li button  {
+.drop__options li button {
     text-align: left;
     background-color: transparent;
 }
 
-.active {
+.dropdown-active {
     max-height: 200px;
 }
 
@@ -254,7 +257,7 @@ form textarea {
 }
 
 
-/* .filter_section {
+/* .filter_menu {
     display: flex;
     align-items: center;
     margin: 0 100px;
@@ -419,7 +422,7 @@ form textarea {
     border-top: none;
 } */
 
-/* .filter_section {
+/* .filter_menu {
     display: flex;
 }
 
@@ -645,27 +648,21 @@ form textarea {
     color: #fff;
 }
 
-.btn__lightbox__close::before  {
+.btn__lightbox__close::before {
     content: '\f00d';
 }
 
 .btn__lightbox__next::before {
     content: '\f054';
 }
+
 .btn__lightbox__prev::before {
     content: '\f053';
 }
-/* .btn__lightbox__prev {
-    border: none;
-    color: #901C1C;
-    font-size: 25px;
-    font-weight: 700;
-    position: fixed;
-    top: 50%;
-    left: 0;
-    margin-top: -14px;
-    z-index: 11;
-} */
+
+.btn__lightbox__prev.show {
+    display: flex;
+}
 
 /* .btn__lightbox__close {
     position: fixed;
@@ -688,7 +685,7 @@ form textarea {
     opacity: 1;
 } */
 
-.lightbox__media img {
+.lightbox__container img {
     width: 125vh;
     height: 80vh;
     object-fit: cover;
@@ -701,7 +698,7 @@ form textarea {
     height: 900px; */
 }
 
-.lightbox__media {
+.lightbox__container {
     width: 100%;
     height: 100%;
     border: 2px solid #fff;
@@ -714,9 +711,10 @@ form textarea {
 }
 
 /* test */
-.active {
+/* .active {
     display: flex;
 }
+
 .hidden {
     display: none;
-}
+} */

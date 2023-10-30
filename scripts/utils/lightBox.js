@@ -1,73 +1,74 @@
 const lightboxWrapper = document.querySelector('#modal_lightbox');
 const btnLightBoxPrev = document.querySelector('.btn__lightbox__prev');
 const btnLightBoxNext = document.querySelector('.btn__lightbox__next');
-const lightboxMedia = document.querySelector('.lightbox__media');
-// console.log('light', lightboxWrapper,btnLightBoxNext,btnLightBoxPrev,lightboxMedia)
+const lightboxContainer = document.querySelector('.lightbox__container');
+const lightbox = document.querySelector('.lightbox');
 
 
+function openLightBox() {
+  const galleryImages = document.querySelectorAll('.mediaCard__img img');
+  const lightboxContainer = document.querySelector('.lightbox__container');
 
-// ouvrir la lightbox
-function openLightBox(picture,title,index) {
-  const lightboxImgs =  document.querySelectorAll('#lightbox__img');
-  console.log('lightboximg', lightboxImgs.length)
-  console.log('picture-title===========',picture,title,index)
-  lightboxWrapper.style.display = 'flex';
-  header.style.display = "none";
-  main.style.display = "none";
-  main.setAttribute('aria-hidden','true');
-  header.setAttribute('aria-hidden','true');
- 
-  // Afficher la photo dans la lightbox
-  lightboxMedia.innerHTML = ''; // Efface le contenu précédent
-  const img = document.createElement('img');
-  img.classList.add('mediaCard__img');
-  img.src = picture;
-  img.alt = title;
+  for (let i = 0; i < galleryImages.length; i++) {
+    let newIndex = i;
+    galleryImages[i].onclick = () => {
+      console.log('iiiiiii',i)
+      lightboxWrapper.style.display = 'flex';
+      header.style.display = "none";
+      main.style.display = "none";
+      main.setAttribute('aria-hidden','true');
+      header.setAttribute('aria-hidden','true');
 
-  // Crée un élément pour afficher le titre
-  const titleElement = document.createElement('div');
-  titleElement.classList.add('mediaCard__info__title');
-  titleElement.textContent = title;
+      function showImage() {
+        let selectedImg = galleryImages[newIndex].src;
+        lightboxContainer.innerHTML = '';
 
-  // Ajoute l'image et le titre à lightboxMedia
-  lightboxMedia.appendChild(img);
-  lightboxMedia.appendChild(titleElement);
+        // Créez un élément img pour afficher l'image dans lightboxContainer
+      const imgCard = document.createElement('img');
+      imgCard.src = galleryImages[newIndex].src;
+      imgCard.getAttribute('data-title');
+      console.log('imgcard===',galleryImages[newIndex])
 
-  // Ecoute sur le bouton prev
-  btnLightBoxPrev.addEventListener('click', () => {
-    showPreviousImage()
-  });
+      // title
+      const title = galleryImages[newIndex].getAttribute('data-title')
+      console.log(title)
+      const lightboxTitle = document.createElement('h3');
+      lightboxTitle.setAttribute('id', 'lightbox__info__title');
+      lightboxTitle.setAttribute('class', 'mediaCard__info__title');
+      lightboxTitle.textContent = title;
 
-  // Ecoute sur le bouton next
-  btnLightBoxNext.addEventListener('click', () => {
-    showNextImage()
+      lightboxContainer.appendChild(imgCard);
+      lightboxContainer.appendChild(lightboxTitle);
 
-  });
+      // lightboxContainer.innerHTML = '';
+        lightboxContainer.src = selectedImg;
+        console.log('source============',lightboxContainer.src)
+        console.log('selected====',selectedImg)
+      }
 
-  let currentImageIndex = 0;
-  
-  function showImage(index) {
-    if (index >= 0 && index < lightboxImgs.length) {
-      const img = lightboxImgs[index];
-      lightboxMedia.innerHTML = ''; // Efface le contenu précédent
-      lightboxMedia.appendChild(img);
-      currentImageIndex = index;
-      console.log('currentindex',currentImageIndex)
+      // Next & prev
+      btnLightBoxPrev.onclick = () => {
+        newIndex--; //decrement
+        if (newIndex < 0) {
+          newIndex = galleryImages.length - 1; // Retour au dernier élément si le début est atteint
+        }
+        showImage() // calling again to update
+      }
+
+      btnLightBoxNext.onclick = () => {
+        newIndex++; //decrement
+        // incrément
+  if (newIndex >= galleryImages.length) {
+    newIndex = 0; // Retour au premier élément si la fin est atteinte
+  }
+        showImage() // calling again to update
+      }
+      showImage();
+      // Si image
+     
+      }
     }
-  }
-  
-  function showPreviousImage() {
-    const previousIndex = (currentImageIndex - 1 + lightboxImgs.length) % lightboxImgs.length;
-    showImage(previousIndex);
-    console.log('previous',previousIndex)
-  }
-  
-  function showNextImage() {
-    const nextIndex = (currentImageIndex + 1) % lightboxImgs.length;
-    showImage(nextIndex);
-    console.log('next',nextIndex)
-  }
-};
+}
 
 // Fermer la lightbox
 function closeLightbox() {
@@ -81,10 +82,52 @@ function closeLightbox() {
 }
 
 
+// function getListeTitres(media){
+//   let listeTitres= [];
+//   console.log('listetitre',listeTitres)
+//   media.forEach((media) => {
+//       if(media.photographerId == id){
+//           const mediaModel = mediaFactory(media);
+//           if(mediaModel.picture == undefined){
+//               listeTitres.push(mediaModel.title);
+//           }
+//           else{
+//               listeTitres.push(mediaModel.title);
+//           }
+//       }
+//   });
+
+//   return listeTitres;
+// }
 
 
+// async function nextMedia(){
+//   const { media } = await getMedias();
+//   let listeMedias = getListeMedias(media);
+//   let listeTitres = getListeTitres(media);
+//   await resetMedia()
+//   if(current + 1 > listeMedias.length-1){
+//       current = 0;
+//   }
+//   else{
+//       current ++;
+//   }
+//   await setMedia(listeMedias[current], listeTitres[current]);
+// }
 
-
+// async function previousMedia(){
+//   const { media } = await getMedias();
+//   let listeMedias = getListeMedias(media);
+//   let listeTitres = getListeTitres(media);
+//   await resetMedia()
+//   if(current - 1 < 0){
+//       current = listeMedias.length-1;
+//   }
+//   else{
+//       current --;
+//   }
+//   await setMedia(listeMedias[current], listeTitres[current]);
+// }
 
                     
 

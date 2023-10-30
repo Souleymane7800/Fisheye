@@ -26,6 +26,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     checkInputs();
+    console.log('Message envoyé')
 });
 
 function checkInputs() {

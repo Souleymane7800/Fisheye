@@ -39,38 +39,96 @@ async function displayData(photographer) {
       photographHeader.appendChild(photographCardDOM);
 };
 
-// On affiche la galerie médias du photographe
+
+// // Filter datas
+// const allMedias = Array.from(document.querySelectorAll('.drop__options li button'));
+// const currentSort = document.querySelector('#current__sort');
+// console.log('allmedias',allMedias)
+// // Hide option deja selectionner:
+// let optionSelected = allMedias.find(filter => filter.textContent == currentSort.textContent);
+// optionSelected.style.display = "none";
+// console.log('selected======',optionSelected)
+
+// allMedias.forEach(filter => {
+//       filter.addEventListener('click', () => {
+//             const filterValue = filter.textContent;
+//             currentSort.textContent = filterValue;
+//             console.log('filtervalue',filterValue)
+
+//             if(optionSelected) optionSelected.style.display = 'block';
+
+//             filter.style.display = 'none';
+//             optionSelected = filter;
+
+//             // displayData(filterValue)
+//             // mediaFactory()
+//             displayMedia(photographMedia,filterValue)
+//             // sortMedia();
+//             // displayMedia(photographMedia);
+//             showMenu();
+//             // filterBox()
+//       })
+// })
+
+// Partie filter
 async function displayMedia(photographMedia) {
+      //console.log('mediaphoto',photographMedia)
       const sectionCard = document.querySelector('.gallery_card_section');
+    
 
-      // Iteration des medias et envoie dans mediaFactory
+    //console.log('sortData',sortedMedia)
+      // Triez le tableau de médias en fonction des critères spécifiés
+      //console.log('selected',selectedSortOption)
+      //console.log('pmedia====',photographMedia)
+            // switch (selectedSortOption) {
+            // case 'Date':
+            // photographMedia.sort((a, b) => new Date(a.date) - new Date(b.date));
+            // break;
+            // case 'Popularité':
+            // photographMedia.sort((a, b) => b.likes - a.likes);
+            // //console.log(photographMedia.sort())
+            // break;
+            // case 'Titre':
+            // photographMedia.sort((a,b) => a.title.localeCompare(b.title));
+            // break;      
+            // default:
+            // Par défaut, triez par date
+            // photographMedia.sort((a, b) => b.likes - a.likes);
+            // photographMedia.sort((a, b) => new Date(a.date) - new Date(b.date));
+            //console.log('photomedia====',photographMedia)
+            // photographMedia.sort((a,b) => a.title.localeCompare(b.title));
+            //console.log(photographMedia.sort())
+      // }
+      // Effacez le contenu précédent de la section
+      // sectionCard.innerHTML = '';
+    
+      // Itération des médias triés et envoi dans mediaFactory
       photographMedia.forEach((media) => {
-            const mediaModel = mediaFactory(media);
-            const mediaCardDom = mediaModel.getMediaCardDOM();
-            sectionCard.appendChild(mediaCardDom);
-            // const sortModel = openLightBox(media);
+        const mediaModel = mediaFactory(media);
+        const mediaCardDom = mediaModel.getMediaCardDOM();
+        //const filtreModel = filterBox(media) //test
+      //   const mediaLightBox = getMedia(photographMedia);
+      //   console.log(mediaLightBox)
+        sectionCard.appendChild(mediaCardDom);
       });
-      // photographMedia.forEach((media) => {
-            // const sortModel = openLightBox(photographMedia);//test
-            const filtreModel = displaySortDatas(photographMedia);
-            // const mediaCardDom = sortModel.getMediaCardDOM();
-            // sectionCard.appendChild(sortModel);
-            // console.log('data==========',media)
-      // });
-};
-
-// media lightbox test
-async function displayLightBox(photographMedia) {
-      const lightboxWrapper = document.querySelector('#modal_lightbox');
-
-      photographMedia.forEach((image) => {
-            // const mediaLightBox = openLightBox(image);
-            // const lightBoxCardDom = mediaLightBox.getLightBoxCardDOM();
-            // lightboxWrapper.appendChild(lightBoxCardDom);
-            // console.log('medialightbox', image);
-
-      })
 }
+
+// =======================================================================================
+// media lightbox test
+// async function displayLightBox(photographMedia) {
+//       const lightboxWrapper = document.querySelector('#modal_lightbox');
+      
+//       photographMedia.forEach((image) => {
+//             // const mediaModel = mediaFactory(media);
+//             // const mediaCardDom = mediaModel.getMediaCardDOM();
+//             //const filtreModel = filterBox(media) //test
+//             const mediaLightBox = getMedia(image);
+//             // console.log(mediaLightBox)
+//             //   console.log(mediaLightBox)
+//             // sectionCard.appendChild(mediaCardDom);
+//       });
+//       console.log('pohmedia',photographMedia)
+// }
 
 async function init () {
       const { photographers, media } = await getPhotograph();
@@ -84,14 +142,8 @@ async function init () {
       const photographMedia = media.filter(
             (media) => media.photographerId == photographerId
       )
-
-      // mediaId test
-      // const currentImage = media.filter(
-      //       (media) => media.photographerId.id == media.id
-      //       )
-            // console.log('mediaID', currentImage)
-      // console.log('photographermedia', media.image)
-      displayLightBox(photographMedia)
+      
+      // displayLightBox(photographMedia)
       displayData(photographer) // On envoie les données dans photograph-header
       displayMedia(photographMedia)
 };
