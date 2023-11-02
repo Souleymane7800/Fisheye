@@ -65,22 +65,26 @@
         <img src="assets/icons/close.svg" onclick="closeModal()" alt="Fermer" title="Fermer cette fenêtre" tabindex="0"
           aria-label="Fermer" />
       </header>
-      <form>
-        <div>
+      <form id="form" class="form">
+        <div class="form-control">
           <label for="firstName">Prénom</label>
           <input type="text" id="firstName" name="firstName" required aria-required="true" />
+          <p>Message d'erreur</p>
         </div>
-        <div>
+        <div class="form-control">
           <label for="lastName">Nom</label>
           <input type="text" id="lastName" name="lastName" required aria-required="true" />
+          <p>Message d'erreur</p>
         </div>
-        <div>
+        <div class="form-control">
           <label for="email">Email</label>
           <input type="text" id="email" name="email" required aria-required="true" />
+          <p>Message d'erreur</p>
         </div>
-        <div>
+        <div class="form-control">
           <label for="message">Message:</label>
           <textarea id="message" name="message" required aria-required="true"></textarea>
+          <p>Message d'erreur</p>
         </div>
         <button type="submit" class="contact_button">Envoyer</button>
       </form>

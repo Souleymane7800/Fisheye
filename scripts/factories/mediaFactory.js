@@ -23,12 +23,13 @@ function mediaFactory(datas) {
                   const videoCard = document.createElement('video');
                   videoCard.setAttribute('src', movie);
                   videoCard.setAttribute("alt", title);
+                  videoCard.setAttribute('data-title', `${title}`)//test
                   videoCard.setAttribute('class', 'media');
                   videoCard.setAttribute('controls', 'true');
                   videoCard.setAttribute('role', 'video');
                   videoCard.setAttribute('mediaID', `${mediaId}`);
                   videoCard.setAttribute("aria-label","Cliquez pour agrandir");
-                  videoCard.setAttribute('poster', '');
+                  // videoCard.setAttribute('poster', '');
 
                   imgCard.appendChild(videoCard);
                         imgCard.addEventListener('click', (e)=>{

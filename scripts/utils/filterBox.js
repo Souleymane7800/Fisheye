@@ -18,13 +18,13 @@ const currentSort = document.querySelector('#current__sort');//
 // Hide option deja selectionner:
 let optionSelected = allMedias.find(filter => filter.textContent == currentSort.textContent);
 optionSelected.style.display = "none";//
-//console.log('selected======',optionSelected)
+console.log('selected======',optionSelected)
 
 allMedias.forEach(filter => {
       filter.addEventListener('click', () => {
             const filterValue = filter.textContent;
             currentSort.textContent = filterValue;
-           // console.log('filtervalue',filterValue)
+           console.log('filtervalue',filterValue)
 
             if(optionSelected) optionSelected.style.display = 'block';
 

@@ -32,6 +32,7 @@ form.addEventListener('submit', (e) => {
 function checkInputs() {
     // On supprime les espaces
     const firstNameValue = firstName.value.trim();
+    console.log('prenom',firstNameValue)
     const lastNameValue = lastName.value.trim();
     const emailValue = email.value.trim();
     const messageValue = message.value.trim();
@@ -50,8 +51,10 @@ function checkInputs() {
     
     if(emailValue === '') {
         setErrorFor(email, 'Merci de renseigner votre email');
+    } else if (!isEmail(emailValue)){
+        setErrorFor(email, 'Email non valide');
     } else {
-        setSuccessFor(email);
+        setSuccessFor(email)
     }
     
     if(messageValue === '') {
@@ -64,8 +67,9 @@ function checkInputs() {
 
 function setErrorFor(input, message) {
     const formControl = input.parentElement;
-    const displayError = formControl.querySelector( 'input' );
-    formControl.className = 'error';
+    const displayError = formControl.querySelector( 'p' );
+    console.log('p',formControl)
+    formControl.className = 'form-control error';
     displayError.innerText = message;
 }
 

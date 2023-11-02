@@ -74,7 +74,7 @@ async function displayData(photographer) {
 async function displayMedia(photographMedia) {
       //console.log('mediaphoto',photographMedia)
       const sectionCard = document.querySelector('.gallery_card_section');
-    
+      // optionSelected
 
     //console.log('sortData',sortedMedia)
       // Triez le tableau de médias en fonction des critères spécifiés
@@ -103,7 +103,8 @@ async function displayMedia(photographMedia) {
       // sectionCard.innerHTML = '';
     
       // Itération des médias triés et envoi dans mediaFactory
-      photographMedia.forEach((media) => {
+      photographMedia.forEach((media,index) => {
+            console.log(index)
         const mediaModel = mediaFactory(media);
         const mediaCardDom = mediaModel.getMediaCardDOM();
         //const filtreModel = filterBox(media) //test
