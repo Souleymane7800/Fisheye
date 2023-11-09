@@ -1,8 +1,7 @@
 function photographerTemplate(data) {
     const { name, portrait, city, tagline, country, price, id } = data;
-    //console.log('datatemplate=============',data)
 
-    // Récupération des photos:
+    // Lien des photos:
     const picture = `../assets/photographers/Photographers_ID_Photos/${portrait}`
 
     // Je mets en place le DOM

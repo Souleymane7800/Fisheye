@@ -68,14 +68,14 @@ function checkInputs() {
 function setErrorFor(input, message) {
     const formControl = input.parentElement;
     const displayError = formControl.querySelector( 'p' );
-    console.log('p',formControl)
+    console.log('p',displayError)
     formControl.className = 'form-control error';
     displayError.innerText = message;
 }
 
 function setSuccessFor(input) {
 	const formControl = input.parentElement;
-	formControl.className = 'success';
+	formControl.className = 'form-control success';
 }
 
 function isEmail(email) {

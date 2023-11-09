@@ -156,6 +156,7 @@ form textarea {
     width: 95%;
     max-width: 1400px;
     margin-top: 20px;
+    margin-left: 70px;
 }
 
 .filter h2 {
@@ -498,8 +499,9 @@ form textarea {
 .mediaCard__img img {
     object-fit: cover;
     object-position: center;
-    width: 350px;
-    height: 300px;
+    /* width: 350px; */
+    width: 450px;
+    height: 350px;
     border-radius: 5px;
     max-width: 100%;
 }
@@ -507,8 +509,9 @@ form textarea {
 .mediaCard__img video {
     object-fit: cover;
     max-width: 100%;
-    width: 350px;
-    height: 300px;
+    width: 450px;
+    /* height: 400px; */
+    height: 350px;
     border-radius: 5px;
 }
 
@@ -581,18 +584,29 @@ form textarea {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: #FFFFFF;
     overflow: auto;
     align-items: center;
 }
 
 .lightbox {
-    position: relative;
+    /* position: relative;
     max-width: 1200px;
     width: 100%;
     max-height: 720px;
     height: 100%;
+    overflow: hidden; */
+    /* position: relative;
+    max-height: 720px;
     overflow: hidden;
+    width: 1253px;
+    height: 984px;
+    top: 40px; */
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    width: 1253px;
+    top: 62px;
 }
 
 .btn__lightbox__next,
@@ -606,6 +620,7 @@ form textarea {
     background-color: transparent;
     z-index: 15;
     color: #901C1C;
+    /* top: 50%; */
     /* -webkit-text-stroke: 1px #000; */
     /* width: 25px;
         height: 50px; */
@@ -624,21 +639,32 @@ form textarea {
 
 .btn__lightbox__next,
 .btn__lightbox__prev {
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
+
 }
 
 .btn__lightbox__next {
     right: 10px;
+    /* width: 50px;
+    height: 500px; */
+    background: url('../assets/icons/chevron-right.svg');
+    background-repeat: no-repeat;
 }
 
 .btn__lightbox__prev {
     left: 10px;
+    background: url('../assets/icons/chevron-left.svg');
+    background-repeat: no-repeat;
 }
 
 .btn__lightbox__close {
     top: 10px;
-    right: 10px;
+    width: 60px;
+    height: 60px;
+    right: 15px;
+    background: url('../assets/icons/cross.svg');
+    background-repeat: no-repeat;
 }
 
 .btn__lightbox__next::before,
@@ -646,21 +672,21 @@ form textarea {
 .btn__lightbox__close::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    font-size: clamp(3rem, 2vw, 3rem);
+    font-size: clamp(3.5rem, 2vw, 3rem);
     color: #901C1C;
 }
 
-.btn__lightbox__close::before {
+/* .btn__lightbox__close::before {
     content: '\f00d';
-}
+} */
 
-.btn__lightbox__next::before {
+/* .btn__lightbox__next::before {
     content: '\f054';
-}
+} */
 
-.btn__lightbox__prev::before {
+/* .btn__lightbox__prev::before {
     content: '\f053';
-}
+} */
 
 .btn__lightbox__prev.show {
     display: flex;
@@ -687,31 +713,10 @@ form textarea {
     opacity: 1;
 } */
 
-.lightbox__container img {
-    /* width: 1050px;
-    height: 900px; */
-    width: 70vh;
-    height: 50vh;
-    object-fit: contain;
-    object-position: center;
-    /* border: 2px solid #a81c1c; */
-    max-width: 100%;
-    color: #C4C4C4;
-    border-radius: 1%;
-    /* max-width: 100%;
-    height: auto;
-    width: 1050px;
-    height: 900px; */
-}
-
-.lightbox__container video {
-    width: 100%;
-}
-
 .lightbox__container {
     width: 100%;
     min-height: 100%;
-    top: 62px;
+    /* top: 62px; */
     /* border: 2px solid #fff; */
     /* border-radius: 5%; */
     display: flex;
@@ -723,6 +728,47 @@ form textarea {
     /* margin-left: 50px; */
     /* min-height: 100vh; */
 }
+
+.lightbox__container img {
+    /* width: 1050px;
+    height: 900px; */
+    width: 80vh;
+    height: 80vh;
+    object-fit: cover;
+    object-position: center;
+    /* border: 2px solid #a81c1c; */
+    max-width: 100%;
+    color: #C4C4C4;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    /* border-radius: 5px; */
+    /* max-width: 100%;
+    height: auto;
+    width: 1050px;
+    height: 900px; */
+}
+
+.lightbox__container video {
+    width: 80vh;
+    height: 80vh;
+    object-fit: cover;
+    /* width: 70vh;
+    height: 65vh; */
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox__info__title {
+    color: #901C1C;
+    /* font-weight: bold; */
+    width: 61%;
+    margin: auto;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 41.25px;
+}
+
 
 /* test */
 /* .active {
@@ -737,4 +783,45 @@ form textarea {
     color: red;
     font-size: 14px;
     margin-top: 5px;
-  }
+}
+
+.form-control {
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.form-control input {
+	border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-family: inherit;
+	font-size: 14px;
+	padding: 10px;
+	width: 100%;
+}
+
+.form-control input:focus {
+	outline: 0;
+	border-color: #777;
+}
+
+.form-control.success input {
+	border-color: #2ecc71;
+}
+
+.form-control.error input {
+	border-color: #e74c3c;
+}
+
+.form-control p {
+	color: #e74c3c;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+.form-control.error p {
+	visibility: visible;
+}
