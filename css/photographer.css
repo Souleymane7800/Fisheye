@@ -9,8 +9,10 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    /* border: 2px solid red; */
+    padding: 0 50px;
 }
 
 .contact_button {
@@ -45,9 +47,9 @@
     padding: 35px;
     margin: auto;
     position: fixed;
-    top: 5%;
+    top: 3%;
     left: 30%;
-    z-index: 5;
+    z-index: 500;
 }
 
 .modal header {
@@ -156,7 +158,7 @@ form textarea {
     width: 95%;
     max-width: 1400px;
     margin-top: 20px;
-    margin-left: 70px;
+    margin-left: 100px;
 }
 
 .filter h2 {
@@ -257,222 +259,6 @@ form textarea {
     transition: all 250ms ease-in-out;
 }
 
-
-/* .filter_menu {
-    display: flex;
-    align-items: center;
-    margin: 0 100px;
-}
-
-.filter_box {
-    font-weight: 700;
-    font-size: 18px;
-    left: 100px;
-} */
-
-/* .filter_select {
-    position: relative;
-    margin: 50px;
-}
-
-.filter_select li {
-    list-style-type: none;
-} */
-
-/* .select {
-    width: 170px;
-    height: 73px;
-    cursor: pointer;
-    background-color: #911C1C;
-    border-radius: 5px;
-    position: relative;
-}
-
-.select_expand {
-    width: 0;
-    height: 69px;
-    position: absolute;
-    top: 0;
-    right: 0;
-} */
-
-/* .select_expand::after {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f104";
-    position: absolute;
-    top: 50%;
-    right: 18px;
-    transform: translate(-50%, -50%) rotate(90deg);
-    color: #fff;
-    font-size: 20px;
-    pointer-events: none;
-    z-index: 2;
-    color: #fff;
-    transition: all 250ms ease-in-out;
-}
-
-.select_expand:checked::after {
-    transform: translate(-50%, -50%) rotate(90deg) scaleX(-1);
-} */
-
-/* .select_expand-label {
-    display: block;
-    width: 100%;
-    height: 69px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-} */
-
-/* .select_close {
-    display: none;
-}
-
-.select_close_label {
-    width: 170px;
-    height: 69px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-} */
-
-/* .select_items {
-    width: 170px;
-    height: 69px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 5px;
-    padding-top: 69px;
-}
-
-.select_input {
-    display: none;
-} */
-
-/* .select_label {
-    display: block;
-    height: 0;
-    font-size: 1.2rem;
-    line-height: 69px;
-    overflow: hidden;
-    color: #fff;
-    background-color: #fff;
-    cursor: pointer;
-    padding-left: 20px;
-} */
-
-/* .select_label-placeholder {
-    height: 69px;
-    vertical-align: middle;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-} */
-
-/* .select_expand:checked+.select_close_label {
-    display: block;
-}
-
-.select_expand:checked+.select_close_label+.select_options {
-    background: #911C1C;
-    border-radius: 0 0 5px 5px;
-}
-
-.select_options .select_label {
-    height: 69px;
-    background: transparent;
-} */
-
-/* .select_options .select_label:hover {
-    background-color: #DB8876;
-    color: #000;
-}
-
-.select_options+.select_expand-label {
-    display: none;
-} */
-
-/* .select_options+.select_option {
-    border-radius: 5px;
-}
-
-.select_options .select_option:nth-child(2) .select_label:hover {
-    border-radius: 0 0 5px 5px;
-} */
-
-/* .select_input:checked+.select_label {
-    height: 69px;
-    margin-top: -69px;
-    background-color: #911C1C;
-    border-radius: 5px;
-} */
-
-/* .border_top {
-    display: block;
-    height: 100%;
-    width: 85%;
-    border-top: 1px solid #fff;
-}
-
-.select_input:checked+.select_label .border_top {
-    border-top: none;
-} */
-
-/* .filter_menu {
-    display: flex;
-}
-
-.filter_select {
-    position: relative;
-    margin: 50px;
-}
-
-.filter_select li {
-    list-style-type: none;
-}
-
-.select {
-    width: 170px;
-    height: 73px;
-    cursor: pointer;
-    background-color: #911C1C;
-    border-radius: 5px;
-    position: relative;
-}
-
-.select_expand {
-    width: 0;
-    height: 69px;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.select_expand :after {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f104";
-    position: absolute;
-    top: 50%;
-    right: 18px;
-    transform: translate(-50%, -50%) rotate(90deg);
-    color: #fff;
-    font-size: 20px;
-    pointer-events: none;
-    z-index: 2;
-    color: #fff;
-    transition: all 250ms ease-in-out;
-}
-
-.select_expand :checked:after {
-    transform: translate(-50%, -50%) rotate(90deg) scaleX(-1);
-} */
-
 /* Gallery img */
 .gallery_card_section {
     display: grid;
@@ -480,6 +266,7 @@ form textarea {
     grid-gap: 30px;
     grid-auto-rows: minmax(350px, auto);
     padding: 25px 0;
+    margin: 0 30px;
     /* justify-content: space-between; */
     /* margin: 0 100px;
     width: 90%; */
@@ -676,42 +463,9 @@ form textarea {
     color: #901C1C;
 }
 
-/* .btn__lightbox__close::before {
-    content: '\f00d';
-} */
-
-/* .btn__lightbox__next::before {
-    content: '\f054';
-} */
-
-/* .btn__lightbox__prev::before {
-    content: '\f053';
-} */
-
 .btn__lightbox__prev.show {
     display: flex;
 }
-
-/* .btn__lightbox__close {
-    position: fixed;
-    top: 20px;
-    right: 10px;
-    background-color: #901C1C;
-    border: none;
-    background: transparent;
-    color: #901C1C;
-    z-index: 12;
-} */
-
-/* .lightbox button {
-    cursor: pointer;
-    opacity: .5;
-    transition: opacity .3s;
-} */
-
-/* .lightbox button:hover {
-    opacity: 1;
-} */
 
 .lightbox__container {
     width: 100%;
@@ -787,7 +541,7 @@ form textarea {
 
 .form-control {
 	margin-bottom: 10px;
-	padding-bottom: 20px;
+	padding-bottom: 55px;
 	position: relative;
 }
 
@@ -819,7 +573,8 @@ form textarea {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	visibility: hidden;
+	visibility: visible;
+    margin-bottom: 25px;
 }
 
 .form-control.error p {

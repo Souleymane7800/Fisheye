@@ -24,9 +24,11 @@ function photographTemplate(photographer) {
     tagPhotographer.textContent = photographer.tagline;
 
     // img
+    const divImg = document.createElement( 'div' )
     const img = document.createElement( 'img' );
     img.setAttribute("src", picture);
     img.setAttribute("alt", photographer.name);
+    divImg.appendChild(img)
 
     // Price & total likes
 
@@ -51,7 +53,7 @@ function photographTemplate(photographer) {
     counterLikes.appendChild(photographerPrice);
 
     // Liaison au DOM
-    document.querySelector('.photograph-header').prepend(img);
+    document.querySelector('.photograph-header').prepend(divImg);
     photographDesc.appendChild(photographerName);
     photographDesc.appendChild(localisation); 
     photographDesc.appendChild(tagPhotographer);
