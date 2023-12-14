@@ -33,18 +33,18 @@
           <div class="dropdown">
             <button class="btn__drop">
               <span id="current__sort" role="listbox" aria-label="liste-filtre" tabindex="0">Popularité</span>
-              <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
+              <span class="arrow"><em class="fa-solid fa-chevron-down"></em></span>
             </button>
 
             <ul class="drop__options">
               <li>
-                <button>Popularité</button>
+                <button aria-label="Popularité" tabindex="0" role="listbox">Popularité</button>
               </li>
               <li>
-                <button>Date</button>
+                <button aria-label="Date" tabindex="0" role="listbox">Date</button>
               </li>
               <li>
-                <button>Titre</button>
+                <button aria-label="Titre" tabindex="0" role="listbox">Titre</button>
               </li>
 
             </ul>
@@ -55,12 +55,13 @@
       <!-- Gallery img -->
       <section class="gallery_card_section"></section>
     </main>
-    <div id="contact_modal">
-      <div class="modal" role="document">
+    <div id="contact_modal" aria-hidden="true">
+      <!-- <div class="overlay"></div> -->
+      <div class="modal" role="dialog" aria-labelledby="title-modal">
         <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Fermer" title="Fermer cette fenêtre" tabindex="0"
-            aria-label="Fermer" />
+          <h2 id="title-modal">Contactez-moi</h2>
+          <button id="closeModalBtn" type="button" onclick="closeModal()" tabindex="0"
+            aria-label="Fermer"><img src="assets/icons/close.svg" alt="Fermer"></button>
         </header>
         <form id="form" class="form">
           <div class="form-control">
@@ -79,11 +80,11 @@
             <!-- <p>Message d'erreur</p> -->
           </div>
           <div class="form-control">
-            <label for="message">Message:</label>
+            <label for="message">Votre message :</label>
             <textarea id="message" name="message" required aria-required="true"></textarea>
             <!-- <p>Message d'erreur</p> -->
           </div>
-          <button type="submit" class="contact_button">Envoyer</button>
+          <button type="submit" class="contact_button modal-btn">Envoyer</button>
         </form>
       </div>
     </div>
@@ -108,7 +109,7 @@
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <!-- Utils -->
-    <script src="/scripts/utils/filterBox.js"></script>
+    <!-- <script src="/scripts/utils/filterBox.js"></script> -->
     <script src="/scripts/utils/lightBox.js"></script>
   </body>
 

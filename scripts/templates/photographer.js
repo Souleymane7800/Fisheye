@@ -8,7 +8,7 @@ function photographerTemplate(data) {
     function getUserCardDOM() {
         // article
         const article = document.createElement( 'article' );
-        article.setAttribute("tabindex",  0);
+        // article.setAttribute("tabindex",  0);
         // div link
         const link = document.createElement('a')
         link.setAttribute("href", `../photographer.html?id=${id}`)
@@ -38,9 +38,9 @@ function photographerTemplate(data) {
         article.appendChild(link)
         link.appendChild(img);
         link.appendChild(photographerName);
-        article.appendChild(localisation); 
-        article.appendChild(tagPhotographer); 
-        article.appendChild(dayPrice); 
+        link.appendChild(localisation); 
+        link.appendChild(tagPhotographer); 
+        link.appendChild(dayPrice); 
         return (article);
     }
     return { name, picture, getUserCardDOM }

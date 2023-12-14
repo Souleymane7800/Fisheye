@@ -6,7 +6,7 @@ function photographTemplate(photographer) {
     // Div avec information name, location et tagline
     const photographDesc = document.createElement( 'div' );
     photographDesc.classList.add('photograph-desc');
-    photographDesc.setAttribute("tabindex",  0);
+    // photographDesc.setAttribute("tabindex",  0);
       
     // h1: name
     const photographerName = document.createElement( 'h1' );
@@ -58,6 +58,14 @@ function photographTemplate(photographer) {
     photographDesc.appendChild(localisation); 
     photographDesc.appendChild(tagPhotographer);
     photographDesc.appendChild(counterLikes)
+
+
+    //  window.addEventListener('keypress', (event) => {
+    //   console.log('a key was pressed',event.key);
+    //   console.log('a key was pressed',event.code);
+    //  })
+
+
     return (photographDesc);
   }
   return { getPhotographCardDOM };
