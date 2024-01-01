@@ -1,30 +1,45 @@
 module.exports = {
-	'env': {
-		'browser': true,
-		'es2021': true
+	"env": {
+	    "browser": true,
+	    "es2021": true
 	},
-	'extends': 'eslint:recommended',
-	'overrides': [
+	"extends": "eslint:recommended",
+	"overrides": [
 	],
-	'parserOptions': {
-		'ecmaVersion': 'latest'
+	"parserOptions": {
+	    "ecmaVersion": "latest"
 	},
-	'rules': {
-		'indent': [
-			'error',
-			'tab'
-		],
-		'linebreak-style': [
-			'error',
-			'windows'
-		],
-		'quotes': [
-			'error',
-			'single'
-		],
-		'semi': [
-			'error',
-			'always'
-		]
+	"rules": {
 	}
-};
+  }
+
+// module.exports = {
+// 	'env': {
+// 		'browser': true,
+// 		'es2021': true
+// 	},
+// 	'extends': 'eslint:recommended',
+// 	'overrides': [
+// 	],
+// 	'parserOptions': {
+// 		'ecmaVersion': 'latest'
+// 	},
+// 	'rules': {
+// 		'indent': [
+// 			'error',
+// 			'tab'
+// 		],
+// 		'linebreak-style': [
+// 			'error',
+// 			'windows'
+// 		],
+// 		'quotes': [
+// 			'error',
+// 			'single'
+// 		],
+// 		'semi': [
+// 			'error',
+// 			'always'
+// 		]
+// 	}
+// };

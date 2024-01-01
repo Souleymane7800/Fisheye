@@ -23,7 +23,6 @@ async function getPhotographers() {
 		console.log('Une erreur est survenue : ');
 	}
 }
-    
 
 async function displayData(photographers) {
 	const photographersSection = document.querySelector('.photographer_section');

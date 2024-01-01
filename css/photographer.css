@@ -192,7 +192,7 @@ form textarea {
     z-index: 100;
     position: absolute;
     border-radius: 5px;
-    overflow: hidden;
+        overflow-y: clip;
     width: 200px;
 }
 
@@ -266,11 +266,6 @@ form textarea {
 .arrow {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    /* content: "\f104"; */
-    /* position: absolute; */
-    /* top: 50%; */
-    /* right: 18px; */
-    /* transform: translate(-50%, -50%) rotate(90deg); */
     color: #fff;
     font-size: 20px;
     pointer-events: none;
@@ -629,3 +624,16 @@ textarea {
     height: 100%;
     background: #333333;
 } */
+.modal-open {
+    overflow: hidden;  /* Désactive le défilement de l'arrière-plan */
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Couleur semi-transparente */
+    z-index: 999; /* Assure que l'overlay est au-dessus de tout le reste */
+}

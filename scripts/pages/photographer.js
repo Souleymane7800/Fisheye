@@ -14,7 +14,6 @@ async function getPhotograph() {
 	try {
 		const response = await fetch('../data/photographers.json');
 		const data = await response.json();
-		// console.log('Données du fichier JSON :', data);
 		photographers = data.photographers;
 		media = data.media;
 		return { photographers, media };
@@ -26,13 +25,11 @@ async function getPhotograph() {
 // On affiche les données du photographe grâce à son ID
 async function displayData(photographer) {
 	const photographHeader = document.querySelector('.photograph-header');
-	//console.log(photographer)
 	// On envoie les données dans template
 	const photographerModel = photographTemplate(photographer);
 	const photographCardDOM = photographerModel.getPhotographCardDOM();
 	photographHeader.appendChild(photographCardDOM);
 }
-
 
 function filterDatas (media) {
 	// Filter datas
@@ -63,9 +60,16 @@ function filterDatas (media) {
 
 			showMenu();
 			displayMedia(media, filterValue);
+			closeMenu();
 		});
 	});
 }
+// Fonction pour fermer le menu
+const closeMenu = () => {
+	const menu = document.querySelector('.drop__options');
+	menu.classList.remove('dropdown-active');
+	document.querySelector('.arrow').classList.remove('rotate');
+};
 
 async function displayMedia( photographMedia, sortOption) {
 	const sectionCard = document.querySelector('.gallery_card_section');
@@ -88,7 +92,6 @@ async function displayMedia( photographMedia, sortOption) {
 	// Itération des médias triés et envoi dans mediaFactory
 	photographMedia.forEach((media) => {
 		const mediaModel = mediaFactory(media);
-		console.log(photographMedia.indexOf(media));
 		const mediaCardDom = mediaModel.getMediaCardDOM(photographMedia.indexOf(media));
 		sectionCard.appendChild(mediaCardDom);
 	});

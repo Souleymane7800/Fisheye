@@ -1,17 +1,24 @@
 function mediaFactory(datas) {
 
 	const { id, photographerId, title, image, video, likes } = datas;
-	const mediaId = id;
+	// const mediaId = id;
 	const picture = `../assets/photographers/${photographerId}/${image}`;
 	const movie = `../assets/photographers/${photographerId}/${video}`;
 
 	function getMediaCardDOM(mediaIndex) {
+
+		// Créer une fonction pour récupérer l'index à partir d'un élément
+		function getIndexFromElement(element) {
+			const mediaCard = element.closest('.mediaCard');
+			return mediaCard ? parseInt(mediaCard.dataset.index, 10) : -1;
+		}
             
 		// Créer un article
 		const article = document.createElement('article');
 		article.classList.add('mediaCard');
 		article.setAttribute('role', 'figure');
 		article.setAttribute('data-id', `${id}`);
+		article.setAttribute('data-index', `${mediaIndex}`); // On récupère l'index ici
 		//article.setAttribute("tabindex",  0); //test
 		// article.setAttribute('a', 'href', `${picture}`)
 
@@ -32,57 +39,46 @@ function mediaFactory(datas) {
 			videoCard.setAttribute('class', 'media');
 			videoCard.setAttribute('controls', 'true');
 			videoCard.setAttribute('role', 'video');
-			// videoCard.setAttribute('mediaID', `${mediaId}`);
 			videoCard.setAttribute('aria-label', 'Cliquez pour agrandir');
-			//videoCard.setAttribute('onkeypress', 'openLightBox()');//test
 
 			imgCard.appendChild(videoCard);
-			imgCard.addEventListener('click', () => {
+			videoCard.addEventListener('click', () => {
 				openLightBox(mediaIndex);
 			});
+
+			imgCard.addEventListener('keydown', (event) => {
+				const index = getIndexFromElement(event.target);
+		    
+				if (event.key === 'Enter' && index !== -1) {
+				    openLightBox(mediaIndex);
+				}
+			  });
 		} else {
 			const img = document.createElement( 'img' );
 			img.setAttribute('src', picture);
 			img.setAttribute('alt', title);
 			img.setAttribute('class', 'media');
 			img.setAttribute('data-title', `${title}`);
-			// img.setAttribute('data', `${id}`)//test
 			img.setAttribute('role', 'img');
-			img.setAttribute('mediaID', `${mediaId}`);
 			img.setAttribute('aria-label', 'cliquez pour agrandir');
-			//imgCard.setAttribute('onkeypress', 'openLightBox()');//test
 
 			imgCard.appendChild(img);
 			imgCard.addEventListener('click', () => {
 				openLightBox(mediaIndex);
 			});
 
-
-			// TEST
-			// Ajouter le gestionnaire d'événements au div imgCard
-			const handleKeyboardNav = (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
-					if(picture === undefined) {
-						openLightBox(mediaIndex);
-
+			// Ajoutez l'écouteur d'événements au document ou à un élément parent
+			imgCard.addEventListener('keydown', (event) => {
+				const index = getIndexFromElement(event.target);
+			
+				if (event.key === 'Enter' && index !== -1) {
+					if (image === undefined) {
+						openLightBox(index);
 					} else {
-						openLightBox(mediaIndex);
+						openLightBox(index);
 					}
 				}
-			};
-			imgCard.addEventListener('keydown', handleKeyboardNav);
-			// imgCard.addEventListener('keydown', function(event) {
-			//       if (event.key === 'Enter') {
-			//           event.preventDefault();
-			//           openLightBox()
-              
-			//           if (image === undefined) {
-			//               openLightBox(this.movie, this.title);
-			//           } else {
-			//               openLightBox(this.picture, this.title);
-			//           }
-			//       }
-			//   });
+			});
 		}
 
 		// partie info
@@ -127,53 +123,30 @@ function mediaFactory(datas) {
 		const sumElement = document.getElementById('totalLike');
 		sumElement.textContent = sommeLikes;
 
-		like.addEventListener('click', ()=>{
+		// Utilisation au clavier de la fonction like
+		like.addEventListener('click', incrementLikes);
+		like.addEventListener('keydown', function (event) {
+		    if (event.key === 'Enter') {
+			  event.preventDefault(); // Empêche le comportement par défaut de la touche "Entrée"
+			  incrementLikes();
+		    	}
+		});
+
+		function incrementLikes() {
 			let nblike = parseInt(numberOfLikes.textContent, 10);
 
-			if(nblike === likes){
+			if (nblike === likes) {
 				numberOfLikes.textContent = nblike + 1;
-				document.getElementById('totalLike').textContent = parseInt(document.getElementById('totalLike').textContent,10)+1;
+				document.getElementById('totalLike').textContent = parseInt(document.getElementById('totalLike').textContent, 10) + 1;
 			} else {
 				numberOfLikes.textContent = likes;
-				document.getElementById('totalLike').textContent = parseInt(document.getElementById('totalLike').textContent,10)-1;
+				document.getElementById('totalLike').textContent = parseInt(document.getElementById('totalLike').textContent, 10) - 1;
 			}
-		});
+		}
 
 		//link les deux parties
 		article.appendChild(imgCard);
 		article.appendChild(info);
-
- 
-		// Gestionnaire de navigation au clavier
-		// const handleKeyboardNav = (event) => {
-		//       console.log('Key pressed:', event.key);
-		//       // ...
-		//   };
-		// imgCard.addEventListener('keydown', function(event) {
-		//       if (event.key === 'Enter') {
-		//             openLightBox(movie,picture,title)
-                        
-		//       }
-		//       console.log('Key pressed on imgCard:', event.key);
-		//       // ...
-		//   });
-            
- 
-
-		// Ajoute un gestionnaire d'événements pour la touche "Entrée" pour les likes
-		like.addEventListener('keydown', function (event) {
-			if (event.key === 'Enter') {
-				let nblike = parseInt(numberOfLikes.textContent, 10);
-
-				if(nblike === likes){
-					numberOfLikes.textContent = nblike + 1;
-					document.getElementById('totalLike').textContent = parseInt(document.getElementById('totalLike').textContent,10)+1;
-				} else {
-					numberOfLikes.textContent = likes;
-					document.getElementById('totalLike').textContent = parseInt(document.getElementById('totalLike').textContent,10)-1;
-				}
-			}
-		});
 
 		return (article);
 	}
@@ -183,7 +156,6 @@ function mediaFactory(datas) {
 	} else{
 		return { id, photographerId, title, picture, likes, getMediaCardDOM };
 	}
-
 }
 
     
