@@ -2,10 +2,6 @@ const lightboxWrapper = document.querySelector('#modal_lightbox');
 const btnLightBoxPrev = document.querySelector('.btn__lightbox__prev');
 const btnLightBoxNext = document.querySelector('.btn__lightbox__next');
 
-// Déclaration de variables
-let header;
-let main;
-
 // eslint-disable-next-line
 function openLightBox(index) {
 
