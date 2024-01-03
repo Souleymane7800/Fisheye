@@ -18,7 +18,6 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
-    /* border: 2px solid red; */
     padding: 0 50px;
 }
 
@@ -229,7 +228,6 @@ form textarea {
     background-color: #fff;
 }
 
-/* A verifier */
 .drop__options li:hover,
 .drop__options li button:focus-visible,
 .btn__drop button:focus-visible,
@@ -282,10 +280,6 @@ form textarea {
     grid-auto-rows: minmax(350px, auto);
     padding: 25px 0;
     margin: 0 30px;
-    /* justify-content: space-between; */
-    /* margin: 0 100px;
-    width: 90%; */
-    /* gap: 210px; */
 }
 
 .mediaCard {
@@ -301,7 +295,6 @@ form textarea {
 .mediaCard__img img {
     object-fit: cover;
     object-position: center;
-    /* width: 350px; */
     width: 450px;
     height: 350px;
     border-radius: 5px;
@@ -312,7 +305,6 @@ form textarea {
     object-fit: cover;
     max-width: 100%;
     width: 450px;
-    /* height: 400px; */
     height: 350px;
     border-radius: 5px;
 }
@@ -324,7 +316,6 @@ form textarea {
 
 .mediaCard__info__title {
     color: #901C1C;
-    /* font-weight: bold; */
     width: 80%;
     margin: auto;
     font-size: 24px;
@@ -345,7 +336,7 @@ form textarea {
     gap: 5px;
 }
 
-/* Toal Likes */
+/* Total Likes */
 .counter__likes {
     width: 250px;
     height: 60px;
@@ -392,18 +383,6 @@ form textarea {
 }
 
 .lightbox {
-    /* position: relative;
-    max-width: 1200px;
-    width: 100%;
-    max-height: 720px;
-    height: 100%;
-    overflow: hidden; */
-    /* position: relative;
-    max-height: 720px;
-    overflow: hidden;
-    width: 1253px;
-    height: 984px;
-    top: 40px; */
     position: relative;
     min-height: 100vh;
     overflow: hidden;
@@ -422,21 +401,6 @@ form textarea {
     background-color: transparent;
     z-index: 15;
     color: #901C1C;
-    /* top: 50%; */
-    /* -webkit-text-stroke: 1px #000; */
-    /* width: 25px;
-        height: 50px; */
-    /* border: none;
-    color: #901C1C;
-    font-size: 25px;
-    font-weight: 700;
-    position: fixed;
-    top: 50%;
-    right: 0;
-    margin-top: -14px;
-    z-index: 11;
-    text-indent: -3000px; */
-
 }
 
 .btn__lightbox__next,
@@ -448,8 +412,6 @@ form textarea {
 
 .btn__lightbox__next {
     right: 10px;
-    /* width: 50px;
-    height: 500px; */
     background: url('../assets/icons/chevron-right.svg');
     background-repeat: no-repeat;
 }
@@ -485,43 +447,27 @@ form textarea {
 .lightbox__container {
     width: 100%;
     min-height: 100%;
-    /* top: 62px; */
-    /* border: 2px solid #fff; */
-    /* border-radius: 5%; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    /* margin-right: 50px; */
-    /* margin-left: 50px; */
-    /* min-height: 100vh; */
 }
 
 .lightbox__container img {
-    /* width: 1050px;
-    height: 900px; */
     width: 80vh;
     height: 80vh;
     object-fit: cover;
     object-position: center;
-    /* border: 2px solid #a81c1c; */
     max-width: 100%;
     color: #C4C4C4;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-    /* border-radius: 5px; */
-    /* max-width: 100%;
-    height: auto;
-    width: 1050px;
-    height: 900px; */
 }
 
 .lightbox__container video {
     width: 80vh;
     height: 80vh;
     object-fit: cover;
-    /* width: 70vh;
-    height: 65vh; */
     object-fit: cover;
     object-position: center;
     border-radius: 5px;
@@ -530,23 +476,12 @@ form textarea {
 
 .lightbox__info__title {
     color: #901C1C;
-    /* font-weight: bold; */
     width: 61%;
     margin: auto;
     font-size: 24px;
     font-weight: 400;
     line-height: 41.25px;
 }
-
-
-/* test */
-/* .active {
-    display: flex;
-}
-
-.hidden {
-    display: none;
-} */
 
 .erreur {
     color: red;
@@ -559,10 +494,6 @@ form textarea {
     padding-bottom: 50px;
     position: relative;
     height: 85px;
-	/* margin-bottom: 10px;
-	padding-bottom: 55px;
-	position: relative;
-    height: 100px; */
 }
 
 .form-control label {
@@ -617,15 +548,11 @@ textarea {
 	visibility: visible;
 }
 
-/* test */
-/* .overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #333333;
-} */
 .modal-open {
-    overflow: hidden;  /* Désactive le défilement de l'arrière-plan */
+    overflow: hidden;
+    position: fixed;  
+    width: 100%; 
+    
 }
 
 .modal-overlay {
@@ -634,6 +561,7 @@ textarea {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Couleur semi-transparente */
-    z-index: 999; /* Assure que l'overlay est au-dessus de tout le reste */
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 999; 
 }
+

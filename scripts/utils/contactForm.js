@@ -45,7 +45,7 @@ form.addEventListener('click', (e) => {
 		isErrors = true;
 	}
 
-	// check l'message
+	// check le message
 	if(!message.value) {
 		const messageError = document.createElement('p');
 		messageError.classList.add('error');
@@ -56,15 +56,12 @@ form.addEventListener('click', (e) => {
 	}
 
 	if (!isErrors) {
-		// Build the alert message
+		// Message de confirmation
 		const validateMessage = `Prénom: ${firstName.value}\nNom: ${lastName.value}\nEmail: ${email.value}\nMessage: ${message.value}`;
 		console.log(validateMessage);
     
-		closeModal(); //ou tout autre code que vous souhaitez exécuter
+		closeModal();
 	}
-	// console.clear()
-
-	// closeModal()
 });
 
 // Fonction pour vérifier le format de l'email
@@ -113,7 +110,7 @@ if (!document.getElementById('contact_modal' !== null)) {
 				focusableElements[(index + 1) % focusableElements.length].focus();
 			}
 
-			event.preventDefault(); // Prevent the default Tab key behavior
+			event.preventDefault();
 		}
 	});
 }

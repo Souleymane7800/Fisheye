@@ -1,7 +1,6 @@
 function mediaFactory(datas) {
 
 	const { id, photographerId, title, image, video, likes } = datas;
-	// const mediaId = id;
 	const picture = `../assets/photographers/${photographerId}/${image}`;
 	const movie = `../assets/photographers/${photographerId}/${video}`;
 
@@ -19,8 +18,6 @@ function mediaFactory(datas) {
 		article.setAttribute('role', 'figure');
 		article.setAttribute('data-id', `${id}`);
 		article.setAttribute('data-index', `${mediaIndex}`); // On récupère l'index ici
-		//article.setAttribute("tabindex",  0); //test
-		// article.setAttribute('a', 'href', `${picture}`)
 
 		// Créer une div pour les images ou vidéos
 		const imgCard = document.createElement('div');
@@ -147,6 +144,8 @@ function mediaFactory(datas) {
 		//link les deux parties
 		article.appendChild(imgCard);
 		article.appendChild(info);
+
+		
 
 		return (article);
 	}

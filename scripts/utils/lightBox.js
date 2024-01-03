@@ -1,8 +1,9 @@
 const lightboxWrapper = document.querySelector('#modal_lightbox');
 const btnLightBoxPrev = document.querySelector('.btn__lightbox__prev');
 const btnLightBoxNext = document.querySelector('.btn__lightbox__next');
-const lightboxContainer = document.querySelector('.lightbox__container');
-const lightbox = document.querySelector('.lightbox');
+// const lightboxContainer = document.querySelector('.lightbox__container');
+// const lightbox = document.querySelector('.lightbox');
+
 
 function openLightBox(index) {
 
@@ -26,10 +27,8 @@ function openLightBox(index) {
 		if (type === '.jpg' || type === '.jpeg' || type === '.png' || type === '.gif') {
 			const imgCard = document.createElement('img');
 			imgCard.src = selectedImg;
-			const title = galleryImages[newIndex].getAttribute('data-title');
 			lightboxContainer.appendChild(imgCard);
 		} else if (type === '.mp4' || type === '.webm' || type === '.ogg') {
-			const title = galleryImages[newIndex].getAttribute('alt');
 			const videoCard = document.createElement('video');
 			videoCard.setAttribute('controls', 'true');
 			videoCard.src = selectedImg;
@@ -43,27 +42,29 @@ function openLightBox(index) {
 		lightboxTitle.innerHTML = title;
 		lightboxContainer.appendChild(lightboxTitle);
 	}
-
-	// Navigation avec les flèches
-	document.addEventListener('keydown', handleKeyPress);
-
+	
+	// KEYBOARD
 	function handleKeyPress(event) {
-	  switch (event.key) {
-	    case 'ArrowLeft':
-		newIndex = (newIndex - 1 + galleryImages.length) % galleryImages.length;
-		showImage();
-		break;
-	    case 'ArrowRight':
-		newIndex = (newIndex + 1) % galleryImages.length;
-		showImage();
-		break;
-	    case 'Escape':
-		closeLightbox();
-		break;
-	    default:
-		break;
-	  }
-	}
+		if (event.keyCode === 27) {
+		    closeLightbox();
+		}
+		if (event.keyCode === 37) {
+		    newIndex--;
+		    if (newIndex < 0) {
+			  newIndex = galleryImages.length - 1;
+		    }
+		    showImage();
+		}
+		if (event.keyCode === 39) {
+		    newIndex++;
+		    if (newIndex >= galleryImages.length) {
+			  newIndex = 0;
+		    }
+		    showImage();
+		}
+	  }				
+    
+	  document.addEventListener('keydown', handleKeyPress);
 
 	btnLightBoxPrev.onclick = () => {
 		newIndex--;

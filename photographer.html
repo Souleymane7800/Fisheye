@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <header id="header">
+    <header id="header" role="banner">
       <!-- Ajout balise a -->
       <a href="./index.html">
         <img src="assets/images/logo.png" class="logo" alt="logo Fisheye" title="logo Fisheye"
@@ -22,14 +22,14 @@
     </header>
     <main id="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact_button" type="button" aria-haspopup="dialog" tabindex="0" onclick="displayModal()">
+        <button class="contact_button"  id="contact_button" type="button" aria-expanded="false" tabindex="0" role="button" onclick="displayModal()">
           Contactez-moi
         </button>
       </div>
       <!-- Filtre -->
       <section class="filter">
         <h2 class="filter_box">Trier par :</h2>
-        <div class="filter_menu">
+        <div class="filter_menu" role="group" aria-labelledby="current__sort">
           <div class="dropdown">
             <button class="btn__drop">
               <span id="current__sort" role="listbox" aria-label="liste-filtre" tabindex="0">Popularité</span>
@@ -38,13 +38,13 @@
 
             <ul class="drop__options">
               <li>
-                <button aria-label="Popularité" tabindex="0" role="listbox">Popularité</button>
+                <button aria-label="Popularité" tabindex="0" role="option" aria-describedby="current__sort">Popularité</button>
               </li>
               <li>
-                <button aria-label="Date" tabindex="0" role="listbox">Date</button>
+                <button aria-label="Date" tabindex="0" role="option">Date</button>
               </li>
               <li>
-                <button aria-label="Titre" tabindex="0" role="listbox">Titre</button>
+                <button aria-label="Titre" tabindex="0" role="option">Titre</button>
               </li>
 
             </ul>
@@ -53,17 +53,17 @@
         <!-- </div> -->
       </section>
       <!-- Gallery img -->
-      <section class="gallery_card_section"></section>
+      <section class="gallery_card_section" role="region" aria-label="Galerie d'images"></section>
     </main>
     <div id="contact_modal" aria-hidden="true">
       <!-- <div class="overlay"></div> -->
-      <div class="modal" role="dialog" aria-labelledby="title-modal">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="title-modal" aria-describedby="form">
         <header>
           <h2 id="title-modal">Contactez-moi</h2>
           <button id="closeModalBtn" type="button" onclick="closeModal()" tabindex="0"
             aria-label="Fermer"><img src="assets/icons/close.svg" alt="Fermer"></button>
         </header>
-        <form id="form" class="form">
+        <form id="form" class="form" aria-labelledby="title-form">
           <div class="form-control">
             <label for="firstName">Prénom</label>
             <input type="text" id="firstName" name="firstName" required aria-required="true" />
@@ -96,7 +96,7 @@
         <!-- Suivant -->
         <button class="btn__lightbox__next"></button>
         <!-- Fermer la modal -->
-        <button class="btn__lightbox__close" onclick="closeLightbox()">
+        <button class="btn__lightbox__close" onclick="closeLightbox()" aria-label="Fermer la modal">
         </button>
         <!-- Affichage des médias de la lightbox -->
         <div class="lightbox__container"></div>
