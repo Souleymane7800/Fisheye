@@ -26,6 +26,7 @@ async function getPhotograph() {
 async function displayData(photographer) {
 	const photographHeader = document.querySelector('.photograph-header');
 	// On envoie les données dans template
+	// eslint-disable-next-line
 	const photographerModel = photographTemplate(photographer);
 	const photographCardDOM = photographerModel.getPhotographCardDOM();
 	photographHeader.appendChild(photographCardDOM);
@@ -91,6 +92,7 @@ async function displayMedia( photographMedia, sortOption) {
     
 	// Itération des médias triés et envoi dans mediaFactory
 	photographMedia.forEach((media) => {
+		// eslint-disable-next-line
 		const mediaModel = mediaFactory(media);
 		const mediaCardDom = mediaModel.getMediaCardDOM(photographMedia.indexOf(media));
 		sectionCard.appendChild(mediaCardDom);

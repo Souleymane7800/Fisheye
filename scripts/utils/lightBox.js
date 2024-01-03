@@ -1,10 +1,12 @@
 const lightboxWrapper = document.querySelector('#modal_lightbox');
 const btnLightBoxPrev = document.querySelector('.btn__lightbox__prev');
 const btnLightBoxNext = document.querySelector('.btn__lightbox__next');
-// const lightboxContainer = document.querySelector('.lightbox__container');
-// const lightbox = document.querySelector('.lightbox');
 
+// Déclaration de variables
+let header;
+let main;
 
+// eslint-disable-next-line
 function openLightBox(index) {
 
 	const galleryImages = document.querySelectorAll('.mediaCard__img');
@@ -46,25 +48,25 @@ function openLightBox(index) {
 	// KEYBOARD
 	function handleKeyPress(event) {
 		if (event.keyCode === 27) {
-		    closeLightbox();
+			closeLightbox();
 		}
 		if (event.keyCode === 37) {
-		    newIndex--;
-		    if (newIndex < 0) {
-			  newIndex = galleryImages.length - 1;
-		    }
-		    showImage();
+			newIndex--;
+			if (newIndex < 0) {
+				newIndex = galleryImages.length - 1;
+			}
+			showImage();
 		}
 		if (event.keyCode === 39) {
-		    newIndex++;
-		    if (newIndex >= galleryImages.length) {
-			  newIndex = 0;
-		    }
-		    showImage();
+			newIndex++;
+			if (newIndex >= galleryImages.length) {
+				newIndex = 0;
+			}
+			showImage();
 		}
-	  }				
+	}				
     
-	  document.addEventListener('keydown', handleKeyPress);
+	document.addEventListener('keydown', handleKeyPress);
 
 	btnLightBoxPrev.onclick = () => {
 		newIndex--;

@@ -1,6 +1,6 @@
 // Récupérer le formulaire et le bouton
 const form = document.querySelector('form');
-const button = document.querySelector('contact_button');
+// const button = document.querySelector('contact_button');
 
 // Ajouter un écouteur d'événement sur le formulaire
 form.addEventListener('click', (e) => {
@@ -66,18 +66,16 @@ form.addEventListener('click', (e) => {
 
 // Fonction pour vérifier le format de l'email
 function isEmail(email) {
+	// eslint-disable-next-line
 	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 
-let focusableElements = [];
-
 // Fonction pour afficher la modale
+// eslint-disable-next-line
 function displayModal() {
-	document.body.setAttribute('data-overlay', true);
 	const modal = document.getElementById('contact_modal');
 	modal.removeAttribute('aria-hidden');
 	modal.style.display = 'block';
-	// document.body.classList.add("modal-open");
 }
 
 // Fonction pour fermer la modale
@@ -85,7 +83,6 @@ function closeModal() {
 	const modal = document.getElementById('contact_modal');
 	modal.style.display = 'none';
 	modal.classList.add('aria-hidden', 'true');
-	// document.body.remove("modal-open");
 }
 
 // * Gestionnaire d'événement pour la navigation au clavier à l'intérieur de la modale

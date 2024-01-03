@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 function mediaFactory(datas) {
 
 	const { id, photographerId, title, image, video, likes } = datas;
@@ -40,16 +41,18 @@ function mediaFactory(datas) {
 
 			imgCard.appendChild(videoCard);
 			videoCard.addEventListener('click', () => {
+				// eslint-disable-next-line
 				openLightBox(mediaIndex);
 			});
 
 			imgCard.addEventListener('keydown', (event) => {
 				const index = getIndexFromElement(event.target);
-		    
+				
 				if (event.key === 'Enter' && index !== -1) {
-				    openLightBox(mediaIndex);
+					// eslint-disable-next-line
+					openLightBox(mediaIndex);
 				}
-			  });
+			});
 		} else {
 			const img = document.createElement( 'img' );
 			img.setAttribute('src', picture);
@@ -61,6 +64,7 @@ function mediaFactory(datas) {
 
 			imgCard.appendChild(img);
 			imgCard.addEventListener('click', () => {
+				// eslint-disable-next-line
 				openLightBox(mediaIndex);
 			});
 
@@ -70,8 +74,10 @@ function mediaFactory(datas) {
 			
 				if (event.key === 'Enter' && index !== -1) {
 					if (image === undefined) {
+						// eslint-disable-next-line
 						openLightBox(index);
 					} else {
+						// eslint-disable-next-line
 						openLightBox(index);
 					}
 				}
@@ -123,10 +129,10 @@ function mediaFactory(datas) {
 		// Utilisation au clavier de la fonction like
 		like.addEventListener('click', incrementLikes);
 		like.addEventListener('keydown', function (event) {
-		    if (event.key === 'Enter') {
-			  event.preventDefault(); // Empêche le comportement par défaut de la touche "Entrée"
-			  incrementLikes();
-		    	}
+			if (event.key === 'Enter') {
+				event.preventDefault(); // Empêche le comportement par défaut de la touche "Entrée"
+				incrementLikes();
+			}
 		});
 
 		function incrementLikes() {

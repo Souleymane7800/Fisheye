@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 function photographerTemplate(data) {
 	const { name, portrait, city, tagline, country, price, id } = data;
 

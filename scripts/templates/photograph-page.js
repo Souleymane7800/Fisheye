@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 function photographTemplate(photographer) {
 
 	const picture = `../assets/photographers/Photographers_ID_Photos/${photographer.portrait}`;
